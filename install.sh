@@ -2,7 +2,6 @@
 
 sudo apt-get -y update
 
-
 sudo apt-get install -y libcurl4-openssl-dev
 sudo apt-get install -y libssl-dev
 sudo apt-get install -y jq
@@ -17,8 +16,6 @@ sudo apt-get install -y python-dnspython
 sudo apt-get install -y git
 sudo apt-get install -y rename
 sudo apt-get install -y xargs
-
-
 
 #install go
 if [[ -z "$GOPATH" ]];then
@@ -52,7 +49,6 @@ select choice in "${choices[@]}"; do
 	esac	
 done
 fi
-
 
 #create a tools folder in ~/
 mkdir ~/tools
@@ -161,12 +157,6 @@ cd ~/tools/SecLists/Discovery/DNS/
 ##THIS FILE BREAKS MASSDNS AND NEEDS TO BE CLEANED
 cat dns-Jhaddix.txt | head -n -14 > clean-jhaddix-dns.txt
 cd ~/tools/
-echo "done"
-
-echo "Installing ctfr"
-git clone https://github.com/UnaPibaGeek/ctfr.git
-cd ctfr
-pip3 install -r requirements.txt
 echo "done"
 
 sudo pip install urllib3==1.23 sudo pip install requests
