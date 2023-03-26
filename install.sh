@@ -16,6 +16,7 @@ sudo apt-get install -y python-dnspython
 sudo apt-get install -y git
 sudo apt-get install -y rename
 sudo apt-get install -y xargs
+sudo apt-get install -y lolcat
 
 #install go
 if [[ -z "$GOPATH" ]];then
@@ -51,6 +52,14 @@ select choice in "${choices[@]}"; do
 done
 fi
 
+#create a worrdlists folder in ~/wordlists
+mkdir ~/wordlists
+cd ~/wordlists/
+wget https://wordlists-cdn.assetnote.io/data/manual/best-dns-wordlist.txt
+wget https://raw.githubusercontent.com/blechschmidt/massdns/master/lists/resolvers.txt
+wget https://gist.githubusercontent.com/six2dez/ffc2b14d283e8f8eff6ac83e20a3c4b4/raw
+mv raw perm.txt
+
 #create a tools folder in ~/
 mkdir ~/tools
 cd ~/tools/
@@ -69,20 +78,8 @@ echo "Installing assetfinder"
 go get -u github.com/tomnomnom/assetfinder
 echo "done"
 
-echo "installing dnsgen"
-pip3 install dnsgen
-echo "done"
-
 echo "installing puredns"
-GO111MODULE=on go get github.com/d3mondev/puredns/v2
-echo "done"
-
-echo "installing massdns"
-git clone https://github.com/blechschmidt/massdns.git
-cd massdns
-make
-sudo make install
-cd ~/tools/
+go install github.com/d3mondev/puredns/v2@latest
 echo "done"
 
 echo "installing gotator"
