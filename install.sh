@@ -117,6 +117,10 @@ git clone https://github.com/1ndianl33t/Gf-Patterns
 sudo mv ~/tools/Gf-Patterns/*.json ~/.gf
 echo "done"
 
+echo "installing anew"
+go install -v github.com/tomnomnom/anew@latest
+echo "done"
+
 echo "installing sqlmap"
 git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
 cd ~/tools/

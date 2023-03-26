@@ -8,7 +8,7 @@ then
 fi
 
 clear
-echo "++++ Alright, let's fetch us some subdomains using Subfinder, Amass & ..." | lolcat
+echo "++++ Alright, let's fetch us some subdomains using Subfinder & Amass" | lolcat
 
 while read line
 do
@@ -21,12 +21,12 @@ do
         done
 done < $1
 
-echo "++++ Running Puredns, dnsgen, massdns, gotator..." | lolcat
+echo "++++ Running Puredns, gotator..." | lolcat
 sleep 1
 	puredns -r ~/root/wordlists/resolvers.txt bruteforce ~/root/wordlists/best-dns-wordlist.txt $var | tee resolved.txt
 	cat  * | sort -u | uniq  | tee $var_uniq
-	gotator -sub $var_uniq -perm /root/wordlists/perm.txt -depth 3 -mindup | uniq | tee $var_perm.txt
-	puredns resolve $var_perm.txt -r /root/wordlists/resolvers.txt
+	gotator -sub $var_uniq -perm ~/root/wordlists/perm.txt -depth 3 -mindup | uniq | tee $var_perm.txt
+	puredns resolve $var_perm.txt -r ~/root/wordlists/resolvers.txt
 
 echo "++++ PROBING & FINDING ONLY ALIVE HOSTS!..." | lolcat
 	cat $var_perm.txt | httpx | sort -u > $var_httpx.txt
