@@ -58,16 +58,13 @@ fi
 mkdir ~/tools
 cd ~/tools/
 
+echo "Installing pdtm"
+go install -v github.com/projectdiscovery/pdtm/cmd/pdtm@latest
+pdtm -install-all
+echo "done"
+
 echo "Installing crobat"
 go install  github.com/cgboal/sonarsearch/cmd/crobat@latest
-echo "done"
-
-echo "Installing subfinder"
-go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-echo "done"
-
-echo "Installing subfinder"
-go install -v github.com/OWASP/Amass/v3/...@master
 echo "done"
 
 echo "Installing assetfinder"
@@ -76,10 +73,6 @@ echo "done"
 
 echo "installing dnsgen"
 pip3 install dnsgen
-echo "done"
-
-echo "installing shuffledns"
-go install  github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
 echo "done"
 
 echo "installing puredns"
@@ -106,9 +99,8 @@ echo "installing waybackurls"
 go install github.com/tomnomnom/waybackurls@latest
 echo "done"
 
-
-echo "installing httpx"
-go install github.com/projectdiscovery/httpx/cmd/httpx@latest
+echo "installing gau"
+go install github.com/lc/gau/v2/cmd/gau@latest
 echo "done"
 
 echo "installing feroxbuster"
@@ -135,21 +127,8 @@ git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
 cd ~/tools/
 echo "done"
 
-echo "installing naabu"
-sudo apt install -y libpcap-dev
-go install github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
-echo "done"
-
 echo "installing unfurl"
 go install github.com/tomnomnom/unfurl@latest
-echo "done"
-
-echo "installing notify"
-go install github.com/projectdiscovery/notify/cmd/notify@latest
-echo "done"
-
-echo "installing nuclei"
-go install  github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 echo "done"
 
 echo "installing CorsMe"
@@ -173,10 +152,6 @@ echo "done"
 
 echo "installing qsreplace"
 go install github.com/tomnomnom/qsreplace@latest
-echo "done"
-
-echo "installing interactsh"
-go install  github.com/projectdiscovery/interactsh/cmd/interactsh-client@latest
 echo "done"
 
 echo "downloading Seclists"
