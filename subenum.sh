@@ -30,6 +30,6 @@ sleep 1
 
 echo "++++ PROBING & FINDING ONLY ALIVE HOSTS!..." | lolcat
 	cat $var_perm.txt | httpx | sort -u > $var_httpx.txt
-	cat $var_httpx.txt | unfurl domains > anew $var_resolve.txt
+	cat $var_httpx.txt | unfurl domains | anew $var_resolve.txt
 
 echo "++++ Probing has been complete, enjoy your alive hosts and URLs under urls_alive..." | lolcat
