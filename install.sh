@@ -27,15 +27,16 @@ select choice in "${choices[@]}"; do
                 yes)
 
 					echo "Installing Golang"
-					wget https://dl.google.com/go/go1.18.5.linux-amd64.tar.gz
-					sudo tar -xvf go1.18.5.linux-amd64.tar.gz
+					wget https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz
+					sudo tar -xvf go1.19.1.linux-amd64.tar.gz
 					sudo rm -rf /usr/local/go
+					sudo rm -rf go1.19.1.linux-amd64.tar.gz
 					sudo mv go /usr/local
 					export GOROOT=/usr/local/go
 					export GOPATH=$HOME/go
 					export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 					echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
-					echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile			
+					echo 'export GOPATH=$HOME/go'	>>source ~/.bash_profile ~/.bash_profile			
 					echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
 					source ~/.bash_profile
 					sleep 1
@@ -57,6 +58,7 @@ cd ~/tools/
 echo "Installing pdtm"
 go install -v github.com/projectdiscovery/pdtm/cmd/pdtm@latest
 pdtm -install-all
+source ~/.bashrc
 echo "done"
 
 echo "Installing crobat"
